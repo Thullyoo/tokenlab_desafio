@@ -3,13 +3,15 @@ package br.thullyoo.event_back.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "TB_EVENTS")
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
@@ -17,6 +19,19 @@ public class Event {
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
+
+    @ManyToOne
+    @JoinColumn(name = "creatorId", nullable = false)
+    private User userCreator;
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_members",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "member_id")
+    )
+    private Set<User> members = new HashSet<>();
+
 
     public Event() {
     }

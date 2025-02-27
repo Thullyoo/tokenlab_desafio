@@ -2,7 +2,8 @@ package br.thullyoo.event_back.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -23,7 +24,11 @@ public class User {
 
     private String password;
 
-    private List<Event> events;
+    @OneToMany(mappedBy = "userCreator", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Event> eventsCreated = new HashSet<>();
+
+    @ManyToMany(mappedBy = "members")
+    private Set<Event> events = new HashSet<>();
 
     public User() {
     }
