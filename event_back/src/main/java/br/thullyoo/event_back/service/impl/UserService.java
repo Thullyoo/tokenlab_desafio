@@ -9,5 +9,5 @@ public interface UserService {
 
     public User registerUser(UserRegisterRequest userRequest);
 
-    public void updateUser(String document, UserUpdateRequest userRequest);
+    public void updateUser(UserUpdateRequest userRequest);
 }
