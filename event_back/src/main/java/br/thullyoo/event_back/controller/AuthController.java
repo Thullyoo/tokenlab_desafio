@@ -2,7 +2,7 @@ package br.thullyoo.event_back.controller;
 
 import br.thullyoo.event_back.dto.request.auth.LoginRequest;
 import br.thullyoo.event_back.dto.response.auth.TokenResponse;
-import br.thullyoo.event_back.service.AuthServiceImpl;
+import br.thullyoo.event_back.service.impl.AuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,9 +1,8 @@
-package br.thullyoo.event_back.service.impl;
+package br.thullyoo.event_back.service;
 
 import br.thullyoo.event_back.dto.request.user.UserRegisterRequest;
 import br.thullyoo.event_back.dto.request.user.UserUpdateRequest;
 import br.thullyoo.event_back.model.User;
-import br.thullyoo.event_back.repository.UserRepository;
 
 public interface UserService {
 

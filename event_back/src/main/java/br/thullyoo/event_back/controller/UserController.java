@@ -3,7 +3,7 @@ package br.thullyoo.event_back.controller;
 import br.thullyoo.event_back.dto.request.user.UserRegisterRequest;
 import br.thullyoo.event_back.dto.request.user.UserUpdateRequest;
 import br.thullyoo.event_back.model.User;
-import br.thullyoo.event_back.service.UserServiceImpl;
+import br.thullyoo.event_back.service.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

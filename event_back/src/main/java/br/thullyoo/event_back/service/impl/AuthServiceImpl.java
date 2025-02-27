@@ -1,11 +1,11 @@
-package br.thullyoo.event_back.service;
+package br.thullyoo.event_back.service.impl;
 
 import br.thullyoo.event_back.dto.request.auth.LoginRequest;
 import br.thullyoo.event_back.dto.response.auth.TokenResponse;
 import br.thullyoo.event_back.model.User;
 import br.thullyoo.event_back.repository.UserRepository;
 import br.thullyoo.event_back.security.JWTUtils;
-import br.thullyoo.event_back.service.impl.AuthService;
+import br.thullyoo.event_back.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
