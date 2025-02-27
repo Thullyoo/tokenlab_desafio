@@ -7,6 +7,7 @@ import br.thullyoo.event_back.repository.UserRepository;
 import br.thullyoo.event_back.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +18,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public User registerUser(UserRegisterRequest userRequest) {
 
         User user = new User();
@@ -24,7 +28,7 @@ public class UserServiceImpl implements UserService {
         user.setDocument(userRequest.document());
         user.setEmail(userRequest.email());
         user.setName(userRequest.name());
-        user.setPassword(userRequest.password());
+        user.setPassword(passwordEncoder.encode(userRequest.password()));
 
         userRepository.save(user);
 
