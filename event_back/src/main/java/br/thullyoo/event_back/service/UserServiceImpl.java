@@ -4,13 +4,14 @@ import br.thullyoo.event_back.dto.request.user.UserRegisterRequest;
 import br.thullyoo.event_back.dto.request.user.UserUpdateRequest;
 import br.thullyoo.event_back.model.User;
 import br.thullyoo.event_back.repository.UserRepository;
+import br.thullyoo.event_back.security.JWTUtils;
 import br.thullyoo.event_back.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,6 +22,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JWTUtils jwtUtils;
+
+    @Transactional
     public User registerUser(UserRegisterRequest userRequest) {
 
         User user = new User();
@@ -35,26 +40,25 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public void updateUser(String document, UserUpdateRequest userRequest) {
+    @Transactional
+    public void updateUser(UserUpdateRequest userRequest) {
 
-        Optional<User> user =  userRepository.findByDocument(document);
+        User user =  jwtUtils.getUserByToken();
 
-        if (user.isEmpty()){
-            throw new BadCredentialsException("User not found");
-        }
 
         if (!userRequest.name().isBlank() && !userRequest.name().isEmpty()){
-            user.get().setName(userRequest.name());
+            user.setName(userRequest.name());
         }
 
         if (!userRequest.password().isBlank() && !userRequest.password().isEmpty()){
-            user.get().setPassword(userRequest.password());
+            user.setPassword(passwordEncoder.encode(userRequest.password()));
         }
 
         if (!userRequest.email().isBlank() && !userRequest.email().isEmpty()){
-            user.get().setEmail(userRequest.email());
+            user.setEmail(userRequest.email());
         }
 
-        userRepository.save(user.get());
+        userRepository.save(user);
+
     }
 }
