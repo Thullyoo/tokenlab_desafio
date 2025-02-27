@@ -67,4 +67,20 @@ public class Event {
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
+
+    public User getUserCreator() {
+        return userCreator;
+    }
+
+    public void setUserCreator(User userCreator) {
+        this.userCreator = userCreator;
+    }
+
+    public Set<User> getMembers() {
+        return members;
+    }
+
+    public void setMembers(Set<User> members) {
+        this.members = members;
+    }
 }
