@@ -1,0 +1,25 @@
+<div class="register_container">
+  <div class="form_container">
+    <form [formGroup]="form" (submit)="register()" class="form_register">
+        <div>
+          <label for="document">Documento: </label>
+          <input id="document" type="text" formControlName="document" placeholder="12345678910">
+        </div>
+        <div>
+          <label for="email">Email: </label>
+          <input id="email" type="email" formControlName="email" placeholder="example@gmail.com">
+        </div>
+        <div>
+          <label for="name">Nome: </label>
+          <input id="name" type="text" formControlName="name" placeholder="Lucas">
+        </div>
+        <div>
+          <label for="password">Senha:</label>
+          <input id="password" type="password" formControlName="password" placeholder="12345">
+        </div>
+        <div>
+          <button>Registrar</button>
+        </div>
+    </form>
+  </div>
+</div>
