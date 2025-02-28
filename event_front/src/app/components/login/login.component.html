@@ -1,0 +1,18 @@
+<div class="login_container">
+  <div class="form_container">
+    <form [formGroup]="form" (submit)="login()" class="form_login">
+        <div>
+          <label for="document">Documento</label>
+          <input id="document" type="text" formControlName="document" placeholder="12345678910">
+        </div>
+        <div>
+          <label for="password">Senha</label>
+          <input id="password" type="password" formControlName="password" placeholder="password">
+        </div>
+        <h3>Não tem uma conta? clique <a href="">aqui</a> para criar</h3>
+        <div>
+          <button>Login</button>
+        </div>
+    </form>
+  </div>
+</div>
