@@ -1,0 +1,21 @@
+<div class="register_container">
+  <div class="form_container">
+    <form [formGroup]="form" (submit)="register()" class="form_register">
+        <div>
+          <label for="description">Descrição: </label>
+          <input id="description" type="text" formControlName="description" placeholder="Esse evento vai ser sobre música....">
+        </div>
+        <div>
+          <label for="startTime">Data início: </label>
+          <input id="startTime" type="datetime-local" formControlName="startTime">
+        </div>
+        <div>
+          <label for="endTime">Nome: </label>
+          <input id="endTime" type="datetime-local" formControlName="endTime">
+        </div>
+        <div>
+          <button>Registrar Evento</button>
+        </div>
+    </form>
+  </div>
+</div>
