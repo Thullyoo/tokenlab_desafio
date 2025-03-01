@@ -1,0 +1,18 @@
+<div class="card_container">
+  <div>
+    <h2>Descrição do evento: </h2>
+    <div class="description">
+      {{ event().description }}
+    </div>
+  </div>
+  <div class="dates">
+    <span>
+      <h2>Começo: </h2>
+      <h3> {{ formatDate(event().startTime)}}</h3>
+    </span>
+    <span>
+      <h2>Fim:</h2>
+      <h3> {{formatDate(event().endTime)}} </h3>
+    </span>
+  </div>
+</div>

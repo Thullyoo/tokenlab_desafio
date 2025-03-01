@@ -1,0 +1,132 @@
+.card_container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  max-width: 400px;
+  border: 2px solid #6506a5;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-self: center; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.card_container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(101, 6, 165, 0.3);
+}
+
+.card_container h2 {
+  color: #6506a5;
+  font-size: 24px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card_container .description {
+  color: #333333;
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_container .dates {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.card_container .dates span {
+  text-align: center;
+}
+
+.card_container .dates span h2 {
+  color: #333333;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card_container .dates span h3 {
+  color: #6506a5;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .card_container {
+    max-width: 400px;
+    height: 200px;
+  }
+  .card_container h2 {
+    font-size: 27px;
+  }
+  .card_container .description {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .card_container {
+    max-width: 350px;
+    height: 250px;
+  }
+  .card_container h2 {
+    font-size: 25px;
+  }
+  .card_container .description {
+    font-size: 19px;
+  }
+  .card_container .dates span h2 {
+    font-size: 25px;
+  }
+  .card_container .dates span h3 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1199.98px) {
+  .card_container {
+    max-width: 360px;
+    height: 260px;
+  }
+  .card_container h2 {
+    font-size: 28px;
+  }
+  .card_container .description {
+    font-size: 20px;
+  }
+  .card_container .dates span h2 {
+    font-size: 28px;
+  }
+  .card_container .dates span h3 {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card_container {
+    max-width: 370px;
+    height: 270px;
+  }
+  .card_container h2 {
+    font-size: 30px;
+  }
+  .card_container .description {
+    font-size: 21px;
+  }
+  .card_container .dates span h2 {
+    font-size: 30px;
+  }
+  .card_container .dates span h3 {
+    font-size: 25px;
+  }
+}
