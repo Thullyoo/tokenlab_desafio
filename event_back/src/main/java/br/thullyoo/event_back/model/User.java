@@ -73,6 +73,22 @@ public class User {
         this.password = password;
     }
 
+    public Set<Event> getEventsCreated() {
+        return eventsCreated;
+    }
+
+    public void setEventsCreated(Set<Event> eventsCreated) {
+        this.eventsCreated = eventsCreated;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
     @Override
     public String toString() {
         return "User{" +
