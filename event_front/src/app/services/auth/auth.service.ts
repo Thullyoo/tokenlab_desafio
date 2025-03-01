@@ -59,4 +59,14 @@ export class AuthService implements CanActivate{
     return true;
   }
 
+  getToken(): string | null {
+    const tokenData = JSON.parse(localStorage.getItem("token") || '{}');
+  
+    if (this.isTokenExpired()) {
+      this.removeToken(); 
+      return null;
+    }
+  
+    return tokenData.token || null; 
+  }
 }
