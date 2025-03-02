@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.DateTimeException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -53,7 +51,7 @@ public class EventServiceImpl implements EventService {
                 .map(member -> new UserEventResponse(member.getName()))
                 .toList();
 
-        return new EventResponse(event.getDescription(), event.getStartTime(), event.getEndTime(), event.getUserCreator().getName(), members);
+        return new EventResponse(event.getId(), event.getDescription(), event.getStartTime(), event.getEndTime(), event.getUserCreator().getName(), members);
     }
 
     public List<EventResponse> getEventsByUser(){
@@ -67,9 +65,10 @@ public class EventServiceImpl implements EventService {
                     .stream()
                     .map(member -> new UserEventResponse(member.getName()))
                     .toList();
-           eventsRes.add(new EventResponse(event.getDescription(), event.getStartTime(), event.getEndTime(), event.getUserCreator().getName(), members));
+           eventsRes.add(new EventResponse(event.getId(),event.getDescription(), event.getStartTime(), event.getEndTime(), event.getUserCreator().getName(), members));
         }
 
         return eventsRes;
     }
+
 }
