@@ -46,4 +46,21 @@ export class EventService {
   
     return this.httpClient.get<EventResponse[]>(this.url + "/list-events", { headers });
   }
+  getEventById(id : number) : Observable<EventResponse>{
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, 
+    });
+    
+    return this.httpClient.get<EventResponse>(this.url + `/${id}`, { headers });
   }
+
+  isEventCreator(id: number): Observable<boolean>{
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, 
+    });
+    
+    return this.httpClient.get<boolean>(this.url + `/event-creator/${id}`, { headers });
+  }
+}
