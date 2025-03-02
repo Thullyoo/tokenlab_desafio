@@ -1,0 +1,137 @@
+.event_container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event_container .event {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.event_container .event h1 {
+  font-size: 26px;
+  color: #6506a5;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.event_container .event h2 {
+  font-size: 18px;
+  color: #555;
+  font-weight: normal;
+}
+
+.event_container div > div {
+  margin-bottom: 15px;
+}
+
+.event_container h2 {
+  font-size: 20px;
+  color: #6506a5;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.event_container span {
+  font-size: 16px;
+  color: #444;
+}
+
+.event_container > div:last-child {
+  margin-top: 20px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button {
+  background-color: #6506a5;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #4d047f;
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.members-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.members-list span {
+  display: inline-block;
+  background-color: #f4f4f9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.members-list::after {
+  content: "...";
+  display: inline-block;
+  font-size: 14px;
+  color: #333;
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .event_container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .event_container .event h1 {
+    font-size: 22px;
+  }
+
+  .event_container .event h2 {
+    font-size: 16px;
+  }
+
+  .event_container h2 {
+    font-size: 18px;
+  }
+
+  .event_container span {
+    font-size: 14px;
+  }
+
+  .event_container > div:last-child span {
+    font-size: 12px;
+  }
+}

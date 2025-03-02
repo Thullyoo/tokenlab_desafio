@@ -1,0 +1,29 @@
+<div class="event_container">
+  <div class="event">
+    <h1>Descrição do evento</h1>
+    <h2>{{ event.description }}</h2>
+  </div>
+  <div>
+    <div>
+      <h2>Data início:</h2>
+      <span>{{ formatDate(event.startTime) }}</span>
+    </div>
+    <div>
+      <h2>Data fim:</h2>
+      <span>{{ formatDate(event.endTime) }}</span>
+    </div>
+  </div>
+  <div class="members-list">
+    <h2>Membros:</h2>
+    @for (member of event.members; track $index) {
+      <span>{{ member.name }}</span>
+    }
+  </div>
+
+  @if (isEventCreator) {
+    <div class="actions">
+      <button class="edit-button">Editar</button>
+      <button class="delete-button">Excluir</button>
+    </div>
+  }
+</div>
