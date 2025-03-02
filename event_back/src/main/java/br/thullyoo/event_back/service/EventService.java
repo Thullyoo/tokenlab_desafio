@@ -12,4 +12,8 @@ public interface    EventService {
     public EventResponse registerEvent(EventRequest eventRequest);
 
     public List<EventResponse> getEventsByUser();
+
+    public EventResponse getEventById(Long id);
+
+    public Boolean isEventCreator(Long id);
 }

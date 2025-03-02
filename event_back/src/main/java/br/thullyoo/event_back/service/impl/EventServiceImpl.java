@@ -71,4 +71,27 @@ public class EventServiceImpl implements EventService {
         return eventsRes;
     }
 
+    public EventResponse getEventById(Long id) {
+        Optional<Event> eventOptional = eventRepository.findById(id);
+        if (eventOptional.isEmpty()) {
+            throw new IllegalArgumentException("Event not found");
+        }
+        Event event = eventOptional.get();
+        List<UserEventResponse> members = event.getMembers()
+                .stream()
+                .map(member -> new UserEventResponse(member.getName()))
+                .toList();
+        return new EventResponse(event.getId(),event.getDescription(), event.getStartTime(), event.getEndTime(), event.getUserCreator().getName(), members);
+    }
+
+    public Boolean isEventCreator(Long id) {
+        User user = jwtUtils.getUserByToken();
+
+        for (Event event : user.getEventsCreated()){
+            if (Objects.equals(event.getId(), id)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
