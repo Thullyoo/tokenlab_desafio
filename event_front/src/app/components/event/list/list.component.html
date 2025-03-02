@@ -1,5 +1,7 @@
 <div class="list_container">
   @for (event of events; track $index) {
+    <a [routerLink]="['/event/', event.id]">
     <app-card [event]="event"></app-card>
+    </a>
   }
 </div>
