@@ -32,4 +32,16 @@ public class EventController {
         List<EventResponse> events = eventService.getEventsByUser();
         return ResponseEntity.status(HttpStatus.OK).body(events);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<EventResponse> getEventById(@PathVariable("id") Long id) {
+        EventResponse eventResponse = eventService.getEventById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(eventResponse);
+    }
+
+    @GetMapping(value = "/event-creator/{id}")
+    public ResponseEntity<Boolean> isEventCreator(@PathVariable("id") Long id){
+        boolean result = eventService.isEventCreator(id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
 }
