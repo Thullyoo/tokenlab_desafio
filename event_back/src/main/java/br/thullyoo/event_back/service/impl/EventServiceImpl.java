@@ -1,6 +1,7 @@
 package br.thullyoo.event_back.service.impl;
 
 import br.thullyoo.event_back.dto.request.event.EventRequest;
+import br.thullyoo.event_back.dto.request.event.EventUpdateRequest;
 import br.thullyoo.event_back.dto.response.event.EventResponse;
 import br.thullyoo.event_back.dto.response.event.UserEventResponse;
 import br.thullyoo.event_back.model.Event;
@@ -101,4 +102,42 @@ public class EventServiceImpl implements EventService {
         }
         return false;
     }
+
+    public void updateEvent(EventUpdateRequest eventUpdateRequest){
+
+        User user = jwtUtils.getUserByToken();
+
+        Optional<Event> eventOptional = eventRepository.findById(eventUpdateRequest.eventId());
+
+        if (eventOptional.isEmpty()){
+            throw new IllegalArgumentException("Event not found");
+        }
+
+        Event event = eventOptional.get();
+
+        if (!eventUpdateRequest.description().equalsIgnoreCase(event.getDescription())){
+            if (eventUpdateRequest.description() != null){
+                event.setDescription(eventUpdateRequest.description());
+            }
+        }
+
+        if (eventUpdateRequest.startTime().isAfter(eventUpdateRequest.endTime())){
+            throw new DateTimeException("Start Time cannot be after the End Time");
+        } else if (!eventUpdateRequest.startTime().isEqual(event.getStartTime())){
+            event.setStartTime(eventUpdateRequest.startTime());
+        }
+
+        if (eventUpdateRequest.startTime().isEqual(eventUpdateRequest.endTime())){
+            throw new DateTimeException("Start Time cannot be equal the End Time");
+        } else if (!eventUpdateRequest.endTime().isEqual(event.getEndTime())){
+            event.setEndTime(eventUpdateRequest.endTime());
+        }
+
+        if (userRepository.hasOverlappingEvents(user.getId(), eventUpdateRequest.startTime(), eventUpdateRequest.endTime())){
+            throw new DateTimeException("Event cannot stand out another");
+        }
+
+        eventRepository.save(event);
+    }
+
 }

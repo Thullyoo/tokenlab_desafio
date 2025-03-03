@@ -16,4 +16,5 @@ public interface    EventService {
     public EventResponse getEventById(Long id);
 
     public Boolean isEventCreator(Long id);
+
 }
