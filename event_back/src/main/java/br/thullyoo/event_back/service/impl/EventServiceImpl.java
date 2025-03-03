@@ -6,6 +6,7 @@ import br.thullyoo.event_back.dto.response.event.UserEventResponse;
 import br.thullyoo.event_back.model.Event;
 import br.thullyoo.event_back.model.User;
 import br.thullyoo.event_back.repository.EventRepository;
+import br.thullyoo.event_back.repository.UserRepository;
 import br.thullyoo.event_back.security.JWTUtils;
 import br.thullyoo.event_back.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private JWTUtils jwtUtils;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public EventResponse registerEvent(EventRequest eventRequest) {
 
         User user = jwtUtils.getUserByToken();
@@ -34,6 +38,9 @@ public class EventServiceImpl implements EventService {
             throw new DateTimeException("Start Time cannot be equal the End Time");
         }
 
+        if (userRepository.hasOverlappingEvents(user.getId(), eventRequest.startTime(), eventRequest.endTime())){
+            throw new DateTimeException("Event cannot stand out another");
+        }
 
         Event event = new Event();
         Set<User> event_user = event.getMembers();
