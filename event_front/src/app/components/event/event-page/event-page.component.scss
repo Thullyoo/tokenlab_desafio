@@ -62,8 +62,14 @@
 }
 
 .edit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
   background-color: #6506a5;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .edit-button:hover {
@@ -72,8 +78,14 @@
 }
 
 .delete-button {
-  background-color: #f44336;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff0000;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
@@ -107,6 +119,181 @@
   font-size: 14px;
   color: #333;
   margin-left: 5px;
+}
+
+.update_container {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update_container.visible {
+  display: block;
+}
+
+.form_update {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form_update div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_update label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form_update input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form_update button {
+  padding: 10px 20px;
+  background-color: #6506a5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form_update button:hover {
+  background-color: #4d047f;
+}
+
+.confirm-delete {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.confirm-delete.visible {
+  display: block;
+}
+
+.confirm-delete h1 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.confirm-delete button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-delete button:first-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.confirm-delete button:first-child:hover {
+  background-color: #d32f2f;
+}
+
+.confirm-delete button:last-child {
+  background-color: #6506a5;
+  color: white;
+}
+
+.confirm-delete button:last-child:hover {
+  background-color: #4d047f;
+}
+
+.cancel-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ccc;
+  color: aaaa#333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #999;
+}
+
+.invite-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #41b100;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.invite-button:hover {
+  background-color: #4e8605;
+  transform: scale(1.05);
+}
+
+.invite-container {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.invite-container.visible {
+  display: block;
+}
+
+.invite-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.invite-form label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.invite-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.invite-form button {
+  padding: 10px 20px;
+  background-color: #6506a5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.invite-form button:hover {
+  background-color: #4d047f;
 }
 
 @media (max-width: 768px) {

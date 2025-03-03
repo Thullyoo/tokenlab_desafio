@@ -20,10 +20,50 @@
     }
   </div>
 
-  @if (isEventCreator) {
+  @if (showActions) {
     <div class="actions">
-      <button class="edit-button">Editar</button>
-      <button class="delete-button">Excluir</button>
+      <button class="edit-button" (click)="showUpdateForm()">Editar</button>
+      <button class="delete-button" (click)="showDeleteConfirmation()">Excluir</button>
+      <button class="invite-button" (click)="showInviteForm()">Convidar</button>
     </div>
   }
+  <div>
+      <div class="update_container" [class.visible]="showUpdate">
+        <form [formGroup]="form" (submit)="update()" class="form_update">
+          <div>
+            <label for="description">Descrição: </label>
+            <input id="description" type="text" formControlName="description" placeholder="Esse evento vai ser sobre música....">
+          </div>
+          <div>
+            <label for="startTime">Data início: </label>
+            <input id="startTime" type="datetime-local" formControlName="startTime">
+          </div>
+          <div>
+            <label for="endTime">Data fim: </label>
+            <input id="endTime" type="datetime-local" formControlName="endTime">
+          </div>
+          <div>
+            <button>Atualizar Evento</button>
+            <button type="button" class="cancel-button" (click)="hideUpdateForm()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    
+  
+      <div class="confirm-delete" [class.visible]="showDelete">
+        <h1>Deseja excluir esse evento?</h1>
+        <button (click)="deleteEvent()">Sim</button>
+        <button (click)="hideDeleteConfirmation()">Não</button>
+      </div>
+    
+  
+      <div class="invite-container" [class.visible]="showInvite">
+        <form class="invite-form" [formGroup]="formInvite" (submit)="confirmInvite()">
+          <label for="documentReceiver">Informe o documento da pessoa que deseja convidar:</label>
+          <input id="documentReceiver" formControlName="documentReceiver" type="text" placeholder="123456789">
+          <button type="submit">Confirmar</button>
+        </form>
+      </div>
+    
+  </div>
 </div>
