@@ -19,7 +19,6 @@ export class ListComponent implements OnInit{
 
   ngOnInit(): void {
     this.eventService.getEvents().subscribe((res) => res.map((event) => this.events.push(event)));
-    console.log(this.events)
   }
 
 }
