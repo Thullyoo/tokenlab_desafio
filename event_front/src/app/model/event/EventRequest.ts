@@ -1,5 +1,5 @@
 export interface EventRequest{
   description: String,
-  startTime: Date,
-  endTime: Date
+  startTime: Date | string,
+  endTime: Date | string
 }
