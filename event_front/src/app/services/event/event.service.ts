@@ -1,7 +1,7 @@
+import { EventRequest } from './../../model/event/EventRequest';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import type { EventRequest } from '../../model/event/EventRequest';
 import { AuthService } from '../auth/auth.service';
 import type { EventResponse } from '../../model/event/EventResponse';
 import type { Observable } from 'rxjs';
@@ -62,5 +62,24 @@ export class EventService {
     });
     
     return this.httpClient.get<boolean>(this.url + `/event-creator/${id}`, { headers });
+  }
+
+  deleteEvent(id : number){
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, 
+    });
+    
+    return this.httpClient.delete(this.url + `/delete/${id}`, { headers });
+  }
+
+  updateEvent(id:number, event : EventRequest){
+
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`, 
+    });
+    
+    return this.httpClient.put(this.url + `/update/${id}`, event, { headers }).subscribe();
   }
 }
