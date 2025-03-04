@@ -24,7 +24,7 @@ public class Event {
     @JoinColumn(name = "creatorId", nullable = false)
     private User userCreator;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "event_members",
             joinColumns = @JoinColumn(name = "event_id"),

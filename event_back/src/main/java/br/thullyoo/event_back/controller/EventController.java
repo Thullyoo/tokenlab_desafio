@@ -1,6 +1,7 @@
 package br.thullyoo.event_back.controller;
 
 import br.thullyoo.event_back.dto.request.event.EventRequest;
+import br.thullyoo.event_back.dto.request.event.EventUpdateRequest;
 import br.thullyoo.event_back.dto.response.event.EventResponse;
 import br.thullyoo.event_back.model.Event;
 import br.thullyoo.event_back.service.impl.EventServiceImpl;
@@ -43,5 +44,17 @@ public class EventController {
     public ResponseEntity<Boolean> isEventCreator(@PathVariable("id") Long id){
         boolean result = eventService.isEventCreator(id);
         return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<Void> updateEvent(@PathVariable("id") Long id, @RequestBody EventUpdateRequest updateRequest){
+        eventService.updateEvent(id, updateRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable("id") Long id){
+        eventService.deleteEvent(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 }
