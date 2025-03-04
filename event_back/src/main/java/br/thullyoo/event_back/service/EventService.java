@@ -17,4 +17,5 @@ public interface    EventService {
 
     public Boolean isEventCreator(Long id);
 
+    public void deleteEvent(Long id);
 }

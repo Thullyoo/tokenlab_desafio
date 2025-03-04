@@ -10,7 +10,9 @@ import br.thullyoo.event_back.repository.EventRepository;
 import br.thullyoo.event_back.repository.UserRepository;
 import br.thullyoo.event_back.security.JWTUtils;
 import br.thullyoo.event_back.service.EventService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import java.time.DateTimeException;
@@ -28,6 +30,7 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private UserRepository userRepository;
 
+    @Transactional
     public EventResponse registerEvent(EventRequest eventRequest) {
 
         User user = jwtUtils.getUserByToken();
@@ -103,11 +106,12 @@ public class EventServiceImpl implements EventService {
         return false;
     }
 
-    public void updateEvent(EventUpdateRequest eventUpdateRequest){
+    @Transactional
+    public void updateEvent(Long id, EventUpdateRequest eventUpdateRequest){
 
         User user = jwtUtils.getUserByToken();
 
-        Optional<Event> eventOptional = eventRepository.findById(eventUpdateRequest.eventId());
+        Optional<Event> eventOptional = eventRepository.findById(id);
 
         if (eventOptional.isEmpty()){
             throw new IllegalArgumentException("Event not found");
@@ -116,28 +120,51 @@ public class EventServiceImpl implements EventService {
         Event event = eventOptional.get();
 
         if (!eventUpdateRequest.description().equalsIgnoreCase(event.getDescription())){
-            if (eventUpdateRequest.description() != null){
+            if(!eventUpdateRequest.description().equals("")){
                 event.setDescription(eventUpdateRequest.description());
             }
         }
 
-        if (eventUpdateRequest.startTime().isAfter(eventUpdateRequest.endTime())){
-            throw new DateTimeException("Start Time cannot be after the End Time");
-        } else if (!eventUpdateRequest.startTime().isEqual(event.getStartTime())){
-            event.setStartTime(eventUpdateRequest.startTime());
+        if (!eventUpdateRequest.startTime().isEqual(event.getStartTime())){
+            if (eventUpdateRequest.startTime().isAfter(eventUpdateRequest.endTime())){
+                throw new DateTimeException("Start Time cannot be after the End Time");
+            } else if (!eventUpdateRequest.startTime().isEqual(event.getStartTime())){
+                event.setStartTime(eventUpdateRequest.startTime());
+            }
         }
 
-        if (eventUpdateRequest.startTime().isEqual(eventUpdateRequest.endTime())){
-            throw new DateTimeException("Start Time cannot be equal the End Time");
-        } else if (!eventUpdateRequest.endTime().isEqual(event.getEndTime())){
-            event.setEndTime(eventUpdateRequest.endTime());
+        if (!eventUpdateRequest.endTime().isEqual(event.getEndTime())){
+            if (eventUpdateRequest.startTime().isEqual(eventUpdateRequest.endTime())){
+                throw new DateTimeException("Start Time cannot be equal the End Time");
+            } else if (!eventUpdateRequest.endTime().isEqual(event.getEndTime())){
+                event.setEndTime(eventUpdateRequest.endTime());
+            }
         }
 
-        if (userRepository.hasOverlappingEvents(user.getId(), eventUpdateRequest.startTime(), eventUpdateRequest.endTime())){
+        if (userRepository.hasOverlappingEventsByEvent(user.getId(), eventUpdateRequest.startTime(), eventUpdateRequest.endTime(), id)){
             throw new DateTimeException("Event cannot stand out another");
         }
 
         eventRepository.save(event);
     }
 
+    @Transactional
+    public void deleteEvent(Long id) {
+        User user = jwtUtils.getUserByToken();
+
+        Optional<Event> eventOptional = eventRepository.findById(id);
+
+        if (eventOptional.isEmpty()) {
+            throw new IllegalArgumentException("Event not found");
+        }
+
+        Event event = eventOptional.get();
+
+        if (!event.getUserCreator().equals(user)) {
+            throw new BadCredentialsException("User is not the creator of this event");
+        }
+
+        eventRepository.delete(event);
+
+    }
 }
