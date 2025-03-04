@@ -22,4 +22,17 @@ public interface UserRepository extends JpaRepository<User, UUID> {
             "AND e1.endTime > :startTime))")
     boolean hasOverlappingEvents(@Param("userId") UUID userId, @Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
 
+    @Query("SELECT CASE WHEN COUNT(e1) > 0 " +
+            "THEN true ELSE false " +
+            "END FROM User u " +
+            "LEFT JOIN u.events e1 WHERE u.id = :userId " +
+            "AND e1.id <> :eventId " +
+            "AND ((e1.startTime < :endTime " +
+            "AND e1.endTime > :startTime))")
+    boolean hasOverlappingEventsByEvent(
+            @Param("userId") UUID userId,
+            @Param("startTime") LocalDateTime startTime,
+            @Param("endTime") LocalDateTime endTime,
+            @Param("eventId") Long eventId
+    );
 }
