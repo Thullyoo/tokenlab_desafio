@@ -14,6 +14,8 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     private LocalDateTime startTime;
