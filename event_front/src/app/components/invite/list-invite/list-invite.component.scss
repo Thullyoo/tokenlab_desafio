@@ -1,0 +1,68 @@
+.list_invite_container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+a{
+  text-decoration: none;
+}
+
+.list_invite_container > div {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+}
+
+.invite_card {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.invite_card h2 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.invite_card .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.invite_card button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.invite_card button:first-child {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.invite_card button:first-child:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.invite_card button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.invite_card button:last-child:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}

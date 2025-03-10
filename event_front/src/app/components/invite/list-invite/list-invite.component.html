@@ -1,0 +1,15 @@
+<div class="list_invite_container">
+  @if (listInvite.length > 0) {
+    @for (invite of listInvite; track $index) {
+      <div class="invite_card">
+        <h2>Deseja aceitar o convite de {{ invite.userSender }} para participar de um  <a [routerLink]="['/event', invite.eventId]"> evento</a>?</h2>
+        <div class="button-container">
+          <button (click)="acceptInvite(invite.inviteId)">Sim</button>
+          <button (click)="declineInvite(invite.inviteId)">Não</button>
+        </div>
+      </div>
+    }
+  } @else {
+    <div>Não há convites pendentes</div>
+  }
+</div>
