@@ -201,21 +201,12 @@
   transition: background-color 0.3s ease;
 }
 
-.confirm-delete button:first-child {
-  background-color: #f44336;
-  color: white;
-}
-
-.confirm-delete button:first-child:hover {
+.confirm-delete button {
   background-color: #d32f2f;
+  color: white;
 }
 
 .confirm-delete button:last-child {
-  background-color: #6506a5;
-  color: white;
-}
-
-.confirm-delete button:last-child:hover {
   background-color: #4d047f;
 }
 
