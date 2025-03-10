@@ -30,11 +30,9 @@ export class AuthService implements CanActivate{
 
   isTokenExpired(): boolean {
     const tokenData = JSON.parse(localStorage.getItem("token") || '{}');
-  
     if (!tokenData || !tokenData.expirationTime) {
       return true; 
     }
-  
     return Date.now() > tokenData.expirationTime; 
   }
 
@@ -61,12 +59,12 @@ export class AuthService implements CanActivate{
 
   getToken(): string | null {
     const tokenData = JSON.parse(localStorage.getItem("token") || '{}');
-  
+
     if (this.isTokenExpired()) {
       this.removeToken(); 
       return null;
     }
-  
+    
     return tokenData.token || null; 
   }
 }
