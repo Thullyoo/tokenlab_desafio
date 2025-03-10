@@ -2,9 +2,7 @@ package br.thullyoo.event_back.model;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "TB_USERS")
@@ -29,6 +27,9 @@ public class User {
 
     @ManyToMany(mappedBy = "members")
     private Set<Event> events = new HashSet<>();
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Invite> receivedInvites = new ArrayList<>();
 
     public User() {
     }
@@ -87,6 +88,14 @@ public class User {
 
     public void setEvents(Set<Event> events) {
         this.events = events;
+    }
+
+    public List<Invite> getReceivedInvites() {
+        return receivedInvites;
+    }
+
+    public void setReceivedInvites(List<Invite> receivedInvites) {
+        this.receivedInvites = receivedInvites;
     }
 
     @Override
