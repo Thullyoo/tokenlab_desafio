@@ -18,7 +18,10 @@ export class ListComponent implements OnInit{
   private eventService = inject(EventService);
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe((res) => res.map((event) => this.events.push(event)));
+    this.eventService.getEvents().subscribe((res) =>{
+      this.events = res;
+      res.sort((a,b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime());
+    })
   }
 
 }
