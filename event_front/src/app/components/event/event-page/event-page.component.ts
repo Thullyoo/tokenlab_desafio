@@ -135,7 +135,7 @@ export class EventPageComponent implements OnInit {
 
   deleteEvent() {
     this.eventService.deleteEvent(this.eventId!).subscribe();
-    this.toastService.info("Evento removido com sucesso!");
+    this.toastService.success("Evento removido com sucesso!");
     this.router.navigateByUrl("/home");
   }
 
