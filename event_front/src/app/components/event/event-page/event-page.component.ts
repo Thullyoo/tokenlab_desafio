@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../../../services/event/event.service';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InviteService } from '../../../services/invite/invite.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-event-page',
@@ -24,6 +25,8 @@ export class EventPageComponent implements OnInit {
   private formService = inject(FormBuilder);
 
   private inviteService = inject(InviteService);
+
+  private toastService = inject(ToastrService);
 
   showUpdate = false;
   showDelete = false;
@@ -132,6 +135,7 @@ export class EventPageComponent implements OnInit {
 
   deleteEvent() {
     this.eventService.deleteEvent(this.eventId!).subscribe();
+    this.toastService.info("Evento removido com sucesso!");
     this.router.navigateByUrl("/home");
   }
 
