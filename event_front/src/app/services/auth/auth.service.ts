@@ -4,6 +4,7 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenResponse } from '../../model/auth/TokenResponse';
 import type { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, RouterStateSnapshot } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,16 @@ export class AuthService implements CanActivate{
 
   private router = inject(Router);
 
+  private toastService = inject(ToastrService);
+
   loginUser(loginRequest: LoginRequest){
     this.httpClient.post<TokenResponse>(this.url + "/login", loginRequest).subscribe({
       next: (res) => {
         this.saveToken(res) 
-        this.router
       } 
       ,
       error: (err) =>
-        alert("Erro ao tentar fazer login!")
+        this.toastService.error("Erro ao tentar fazer login!")
     })
   }
 

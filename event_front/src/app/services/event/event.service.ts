@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import type { EventResponse } from '../../model/event/EventResponse';
 import type { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class EventService {
 
   authService = inject(AuthService);
 
+  toastService = inject(ToastrService);
+
   registerEvent(eventRequest: EventRequest){
 
     const token = this.authService.getToken()
@@ -29,10 +32,11 @@ export class EventService {
     
     this.httpClient.post(this.url + "/register", eventRequest, {headers}).subscribe({
       next: () =>  {
+        this.toastService.success("Evento registrado com sucesso!");
         this.router.navigateByUrl("event-list")
       },
       error: () => {
-        alert("Erro ao tentar registar evento");
+        this.toastService.error("Erro ao tentar registrar evento!");
       }
         
     })
