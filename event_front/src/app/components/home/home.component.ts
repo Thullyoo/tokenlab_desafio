@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  private authService = inject(AuthService);
+  
+  private router = inject(Router);
+
+  logout(){
+    this.authService.removeToken();
+    this.router.navigateByUrl("/login");
+  }
 
 }
