@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import type { EventResponse } from '../../../../model/event/EventResponse';
+import type { EventResponse } from '../../../../../features/models/event/EventResponse';
 
 @Component({
   selector: 'app-card',

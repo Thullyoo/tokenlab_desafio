@@ -1,8 +1,9 @@
-import { isAccepeted } from './../../model/invite/InviteAccepted';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import type { InviteRequest } from '../../model/invite/InviteRequest';
-import { InviteResponse } from '../../model/invite/InviteResponse';
+import type { InviteRequest } from '../../../features/models/invite/InviteRequest';
+import type { isAccepeted } from '../../../features/models/invite/InviteAccepted';
+import type { InviteResponse } from '../../../features/models/invite/InviteResponse';
+
 
 @Injectable({
   providedIn: 'root'

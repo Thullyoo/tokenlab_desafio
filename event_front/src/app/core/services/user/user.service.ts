@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import type { UserRegisterRequest } from '../../model/user/UserRegisterRequest';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import type { UserRegisterRequest } from '../../../features/models/user/UserRegisterRequest';
 
 @Injectable({
   providedIn: 'root'

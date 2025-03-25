@@ -1,11 +1,10 @@
-import { routes } from './../../../app.routes';
 import { Component, inject, type OnInit } from '@angular/core';
-import type { EventResponse } from '../../../model/event/EventResponse';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventService } from '../../../services/event/event.service';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InviteService } from '../../../services/invite/invite.service';
 import { ToastrService } from 'ngx-toastr';
+import { EventService } from '../../../../core/services/event/event.service';
+import { InviteService } from '../../../../core/services/invite/invite.service';
+import type { EventResponse } from '../../../../features/models/event/EventResponse';
 
 @Component({
   selector: 'app-event-page',

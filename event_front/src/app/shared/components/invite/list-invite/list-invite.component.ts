@@ -1,6 +1,6 @@
 import { Component, inject, type OnInit } from '@angular/core';
-import type { InviteResponse } from '../../../model/invite/InviteResponse';
-import { InviteService } from '../../../services/invite/invite.service';
+import type { InviteResponse } from '../../../../features/models/invite/InviteResponse';
+import { InviteService } from '../../../../core/services/invite/invite.service';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({

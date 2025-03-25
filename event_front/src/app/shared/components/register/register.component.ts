@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../../services/user/user.service';
+import { UserService } from '../../../core/services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

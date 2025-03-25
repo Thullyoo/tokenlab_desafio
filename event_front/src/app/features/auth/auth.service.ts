@@ -1,10 +1,10 @@
-import { LoginRequest } from './../../model/auth/LoginRequest';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TokenResponse } from '../../model/auth/TokenResponse';
 import type { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, RouterStateSnapshot } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import type { LoginRequest } from '../models/auth/LoginRequest';
+import type { TokenResponse } from '../models/auth/TokenResponse';
 
 @Injectable({
   providedIn: 'root'

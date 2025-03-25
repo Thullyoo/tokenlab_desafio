@@ -1,10 +1,10 @@
-import { EventRequest } from './../../model/event/EventRequest';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import type { EventResponse } from '../../model/event/EventResponse';
 import type { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import type { EventRequest } from '../../../features/models/event/EventRequest';
+import type { EventResponse } from '../../../features/models/event/EventResponse';
 
 @Injectable({
   providedIn: 'root'

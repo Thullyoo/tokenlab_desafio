@@ -1,8 +1,9 @@
 import { Component, inject, type OnInit } from '@angular/core';
-import { EventService } from '../../../services/event/event.service';
-import type { EventResponse } from '../../../model/event/EventResponse';
+
 import { CardComponent } from './card/card.component';
 import { RouterModule } from '@angular/router';
+import type { EventResponse } from '../../../../features/models/event/EventResponse';
+import { EventService } from '../../../../core/services/event/event.service';
 
 @Component({
   selector: 'app-list',

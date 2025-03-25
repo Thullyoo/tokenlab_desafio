@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EventService } from '../../../services/event/event.service';
+import { EventService } from '../../../../core/services/event/event.service';
 
 @Component({
   selector: 'app-register',

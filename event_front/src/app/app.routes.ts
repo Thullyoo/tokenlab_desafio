@@ -1,12 +1,12 @@
-import { RegisterEventComponent } from './components/event/register/register.component';
+import { RegisterEventComponent } from './shared/components/event/register/register.component';
 import { Router, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { AuthService } from './services/auth/auth.service';
-import { RegisterComponent } from './components/register/register.component';
-import { ListComponent } from './components/event/list/list.component';
-import { EventPageComponent } from './components/event/event-page/event-page.component';
-import { ListInviteComponent } from './components/invite/list-invite/list-invite.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { AuthService } from './features/auth/auth.service';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { ListComponent } from './shared/components/event/list/list.component';
+import { EventPageComponent } from './shared/components/event/event-page/event-page.component';
+import { ListInviteComponent } from './shared/components/invite/list-invite/list-invite.component';
 
 export const routes: Routes = [
   {
